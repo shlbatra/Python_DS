@@ -1,0 +1,100 @@
+Recursion
+
+Ex1
+
+public int getMyPositionInLine(Person person) {
+    if (person.nextInLine == null) {
+        return 1;
+    }
+    return 1 +  getMyPositionInLine(person.nextInLine)
+}
+
+Ex2 
+function revise(essay){
+    read(essay);
+    get_feedback_on(essay);
+    apply_changes_on(essay);
+    revise(essay) unless essay.complete?; 
+}
+
+public void recursion(int someValue) {
+    if (someValue == 10){
+        return;   #Base Case
+    }
+    return recursion(someValue+1); #Recursive call
+}
+
+Uses memoization to reduce time complexity 
+Work with recursive structues - trees and graphs 
+
+Call Stack
+-----------
+
+public string A() {
+return hello + B();
+}
+
+public string B() {
+return my + C();
+}
+
+public string C() {
+return friends;
+}
+
+Call Stack -> Store Method Invokations  (Stake Frame)
+Start A ->
+
+3 friends
+2 my + C()
+1 hello + B()
+
+3 finish then 2 finish and then 1 finish 
+
+Another ex - Infinite loop
+
+public string A() {
+    return A()
+}
+
+Stack overflow when exceed preallocated memory buffer has - Reduce 
+when return value and not method - use base case 
+
+Recursion with Strings
+
+Ex1 . String reversal 
+
+Base Case - Pass what minimum that immidiately return
+a. One letter reversed 
+b. Empty string reversed 
+
+Recursion with Numbers
+Decimal base 10 to Binary base 2
+
+Sum of Natural Numbers 
+3 = 1+2+3 = 6
+
+Divide and Conquer Algos 
+1. Divide problem into several small problems
+Normally, sub problems are similar to original 
+
+2. Conquer subproblems by solving them recursively
+Base Case: solve small enough problems by Brute force
+
+3. Combine solutions to get solution to sub problems
+And finally solution to original problem 
+
+4. Divide and conquer algo are normally recursive 
+
+##############Need to work on merge sort fix here####################
+
+Trees
+
+Insert value in binary search tree
+
+
+
+
+
+
+

@@ -1,0 +1,61 @@
+Sliding Window Algo
+1. Fixed Size
+2. Dyanmically resizing window - Grow and Shrink windows till reach end 
+of array
+
+Brute force approach 
+Start at index and then keep iterating till end. Do for each index
+Work is duplicated - unnecessary iteration over elements we have seen 
+before. Duplicated work and typically yields O(N*k) time complexity (O(N2))
+
+Sliding Window Tips -
+- Suited for iterable items, Things iterate over sequentially 
+    - contiguous sequence of elements (Items grouped together)
+    - Strings, arrays, linked lists  
+- Find Min, Max, Longest, Shortest, Contained within string/array 
+    - maybe we need to calculate something 
+
+Qn Variants 
+------------
+
+Fixed Length Variant 
+    - Maximum sum of contiguous subarray of size 3
+
+Dyanmic Variant 
+    - Window grow and shrink, 
+    - Find window that has smallest sum greater than value k
+
+Dyanmic Variant with Auxillary datastructure 
+    - Include hashmap or set 
+    - Find longest substring with no more than k distinct characters (Use hash 
+    map for how often characters happen in substring)
+    - String permutation -> Does small string exist as permutation of largest 
+    string 
+
+Commonalilities between these questions
+---------------------------------------
+Everything grouped in sequence -> subarray, substring 
+Sequential criteria -> longest/smallest/contains/max/min
+
+
+###########################################################
+
+- Find subarrays in array that satisfy given conditions
+- Mantain subset of items as your window and resize and move that 
+window within largest list until you find a solution 
+- Time Complexity O(n)
+- Space Complexity O(1)
+
+- Input size is unlimited so memory can blow up if we are not 
+careful of what we keep in memory
+        - Do not precalculate and store all possible 
+          variations beforehand (brute force)
+        - Do not use recursion. Call stack will overflow 
+- Think through all data structures that can be utilized 
+
+
+
+
+
+
+

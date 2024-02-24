@@ -1,0 +1,40 @@
+Depth First Search
+Time - O(n)
+DataStrcuture - Hashset (to avoid getting into cycle)
+If not use recursive then can use Stack as well
+
+Breadth First Search
+
+Time - O(n)
+DataStrcuture - Queue (as not done recursively)
+Avoid cycle using Hashset again 
+
+Union Find - union together disjoint sets and 
+combine together efficiently 
+Time - O(nlogn)
+DataStructure - Forest of Trees 
+Ex - Number of connected components in undirected graph
+
+Topological Sort - Hard, Built on top of DFS, Given Directed 
+Acyclical Graph (DAG), read value of node and print in order 
+every node before it already processed. 
+Time - O(n)
+DataStructure - Hashset 
+Ex. Alien Dictionary 
+
+Dijkstra Shortest Path Algo - Find shortest path from starting node 
+to every other node in graph , can have weighted edges, 
+Time - E log V  (E- edges and V - vertices)
+Data Structure - Heap or Priorty Queue as look at min of edges 
+Hashset to avoid cycle 
+Ex - Network Delay Time 
+
+Prim or Kruskal (Minimum Spanning Tree)
+Floyd Warshall Algo 
+
+
+
+
+
+
+
