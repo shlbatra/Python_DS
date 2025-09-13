@@ -7,7 +7,7 @@ class Solution:
         Second loop right end of subarray
         Calculate sum and update the maxsum accordingly
         '''
-        maxsum=-math.inf
+        maxsum=nums[0]
         for i in range(len(nums)):
             cumsum = 0
             for j in range(i, len(nums)):
@@ -22,7 +22,7 @@ class Solution:
         Any time, cumsum < 0 , then update to 0 
         else store max of maxsum, cumsum as max value needed
         '''
-        maxsum=-inf
+        maxsum=nums[0]
         cumsum=0
         for i in range(len(nums)):
             if cumsum < 0:
