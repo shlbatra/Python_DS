@@ -1,0 +1,7 @@
+[project]
+name = "python-ds"
+version = "0.1.0"
+description = "Python Data Structures and Algorithms Practice"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = []

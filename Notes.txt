@@ -1,0 +1,27 @@
+Arrays
+
+Binary Search 
+Sort
+Two Pointers
+Sliding Window
+Prefix Sums
+
+Decision Trees
+
+Recursion
+Binary Trees
+Combinatorics
+Dyanmic Programming
+
+HashMap
+Count occurances
+Adjacency list for graph problems
+
+Graphs
+DFS
+BFS
+
+Heaps
+Min / Max Heap
+
+Dyanmic Programming

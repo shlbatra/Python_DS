@@ -22,7 +22,6 @@ class Solution:
                 return([l+1,r+1]) # arrays are 0 indexed
 
     def twoSum_bruteforce(self, numbers: List[int], target: int) -> List[int]:
-        print(len(numbers))
         for i in range(len(numbers)):
             for j in range(i+1,len(numbers)):
                 if(numbers[i]+numbers[j])==target:
@@ -40,9 +39,9 @@ class Solution:
     #     # 
         for i in range(len(numbers)):
             if (target - numbers[i]) in h_map:
-                return (i+1, h_map[target - numbers[i]]+1)
+                return [i+1, h_map[target - numbers[i]]+1]
             h_map[numbers[i]] = i
             
 obj1 = Solution()
-ans = obj1.twoSum_bruteforce([2, 7, 11, 15], 13)
+ans = obj1.twoSum_hashmap([2, 7, 11, 15], 13)
 print(ans)
