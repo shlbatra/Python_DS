@@ -1,5 +1,9 @@
 {
-    "editor.quickSuggestions": false,
+    "editor.quickSuggestions": {
+        "comments": "off",
+        "strings": "off",
+        "other": "off"
+    },
     "editor.suggestOnTriggerCharacters": false,
     "editor.acceptSuggestionOnCommitCharacter": false,
     "editor.acceptSuggestionOnEnter": "off",
@@ -22,7 +26,11 @@
     "python.analysis.typeCheckingMode": "off",
     "python.linting.enabled": false,
     "[python]": {
-        "editor.quickSuggestions": false,
+        "editor.quickSuggestions": {
+            "comments": "off",
+            "strings": "off",
+            "other": "off"
+        },
         "editor.acceptSuggestionOnEnter": "off",
         "editor.tabCompletion": "off"
     }
