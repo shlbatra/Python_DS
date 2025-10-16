@@ -1,37 +1,32 @@
 # Using stack
 # First In, First Out ex. A, B, D -> then D first, B and finally A
 # Time and space complexity of O(n)
-# check children exists before adding to stack
+# check children exists before adding to queue
+# recursive under the hood uses stack order
+from collections import deque
 
+class BreadthFirstBT:
 
-class DepthFirstBT:
-
-    def depth_first_traversal(self, root):
+    def breadth_first_traversal(self, root):
 
         if root is None: return []
-
-        stack = [ root ]
+        q = deque() # Optimal data structure with O(1) add and remove operations
+        q.append(root)
         res = []
 
-        while len(stack) > 0:
+        while len(q) > 0:
 
-            curr_node = stack.pop() # LIFO
+            curr_node = q.popleft() # First in , First out
             # print(curr_node.value)
             res.append(curr_node.value)
         
-            if curr_node.right:
-                stack.append(curr_node.right)
             if curr_node.left:
-                stack.append(curr_node.left)
+                q.append(curr_node.left)
+            if curr_node.right:
+                q.append(curr_node.right)
             
         return res
 
-# a - c , b
-# b - c, e, d
-# d - c, e
-# e - c
-# c - f
-# f
 
 class Node:
     def __init__(self, value):
@@ -52,10 +47,10 @@ b.left = d
 b.right = e
 c.right = f
 
-dfs = DepthFirstBT()
-res = dfs.depth_first_traversal(a)
+dfs = BreadthFirstBT()
+res = dfs.breadth_first_traversal(a)
 print(res)
 
 a = None
-res = dfs.depth_first_traversal(a)
+res = dfs.breadth_first_traversal(a)
 print(res)

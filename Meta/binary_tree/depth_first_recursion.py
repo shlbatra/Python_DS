@@ -9,29 +9,9 @@ class DepthFirstBT:
     def depth_first_traversal(self, root):
 
         if root is None: return []
-
-        stack = [ root ]
-        res = []
-
-        while len(stack) > 0:
-
-            curr_node = stack.pop() # LIFO
-            # print(curr_node.value)
-            res.append(curr_node.value)
-        
-            if curr_node.right:
-                stack.append(curr_node.right)
-            if curr_node.left:
-                stack.append(curr_node.left)
             
-        return res
+        return [ root.value, *self.depth_first_traversal(root.left), *self.depth_first_traversal(root.right)]
 
-# a - c , b
-# b - c, e, d
-# d - c, e
-# e - c
-# c - f
-# f
 
 class Node:
     def __init__(self, value):
