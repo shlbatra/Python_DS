@@ -1,0 +1,127 @@
+Setup: 3-Class Classification (Cat, Dog, Bird)
+
+  Say we have 9 predictions:
+
+  | Sample | True | Predicted |
+  |--------|------|-----------|
+  | 1      | Cat  | Cat       |
+  | 2      | Cat  | Cat       |
+  | 3      | Cat  | Dog       |
+  | 4      | Dog  | Dog       |
+  | 5      | Dog  | Bird      |
+  | 6      | Dog  | Bird      |
+  | 7      | Bird | Bird      |
+  | 8      | Bird | Bird      |
+  | 9      | Bird | Cat       |
+
+  Per-Class Precision & Recall
+
+  For each class individually:
+
+  Cat
+
+  - Precision = Of all predicted as Cat, how many were actually Cat?
+    - Predicted Cat: samples 1, 2, 9 → 2 correct (1,2), 1 wrong (9)
+    - Precision = 2/3 = 0.67
+  - Recall = Of all actual Cats, how many did we find?
+    - Actual Cats: samples 1, 2, 3 → caught 2 (1,2), missed 1 (3)
+    - Recall = 2/3 = 0.67
+
+  Dog
+
+  - Predicted Dog: sample 3, 4 → 1 correct, 1 wrong
+  - Precision = 1/2 = 0.50
+  - Actual Dogs: 4, 5, 6 → caught 1, missed 2
+  - Recall = 1/3 = 0.33
+
+  Bird
+
+  - Predicted Bird: 5, 6, 7, 8 → 2 correct, 2 wrong
+  - Precision = 2/4 = 0.50
+  - Actual Birds: 7, 8, 9 → caught 2, missed 1
+  - Recall = 2/3 = 0.67
+
+  Macro Precision & Recall
+
+  Simple average across all classes:
+
+  Macro Precision = (0.67 + 0.50 + 0.50) / 3 = 0.56
+  Macro Recall    = (0.67 + 0.33 + 0.67) / 3 = 0.56
+
+  Key Difference
+
+  | Metric    | What it tells you                                  |
+  |-----------|----------------------------------------------------|
+  | Per-class | How well the model performs on that specific class |
+  | Macro     | Overall performance, treating all classes equally  |
+
+  Why it matters
+
+  - If you care about rare classes (e.g., fraud detection), look at per-class metrics
+  - Macro averages can hide poor performance on minority classes
+  - In our example: Dog has terrible recall (0.33) but macro-recall (0.56) looks okay
+
+Class Distribution (Support)
+
+  | Class | Count | Weight     |
+  |-------|-------|------------|
+  | Cat   | 3     | 3/9 = 0.33 |
+  | Dog   | 3     | 3/9 = 0.33 |
+  | Bird  | 3     | 3/9 = 0.33 |
+
+  Per-Class Metrics (from before)
+
+  | Class | Precision | Recall | Support |
+  |-------|-----------|--------|---------|
+  | Cat   | 0.67      | 0.67   | 3       |
+  | Dog   | 0.50      | 0.33   | 3       |
+  | Bird  | 0.50      | 0.67   | 3       |
+
+  Macro vs Weighted
+
+  Macro (simple average — all classes equal):
+  Macro Precision = (0.67 + 0.50 + 0.50) / 3 = 0.56
+  Macro Recall    = (0.67 + 0.33 + 0.67) / 3 = 0.56
+
+  Weighted (weighted by class frequency):
+  Weighted Precision = (0.67×3 + 0.50×3 + 0.50×3) / 9 = 5.01/9 = 0.56
+  Weighted Recall    = (0.67×3 + 0.33×3 + 0.67×3) / 9 = 5.01/9 = 0.56
+
+  In this case they're equal because classes are balanced (equal support)
+
+ Imbalanced Example
+
+  Now imagine a different distribution:
+
+  | Class | Precision | Recall | Support |
+  |-------|-----------|--------|---------|
+  | Cat   | 0.90      | 0.90   | 100     |
+  | Dog   | 0.80      | 0.80   | 50      |
+  | Bird  | 0.20      | 0.20   | 10      |
+
+  Macro (treats all classes equally):
+  Macro Precision = (0.90 + 0.80 + 0.20) / 3 = 0.63
+  Macro Recall    = (0.90 + 0.80 + 0.20) / 3 = 0.63
+
+  Weighted (accounts for frequency):
+  Weighted Precision = (0.90×100 + 0.80×50 + 0.20×10) / 160
+                     = (90 + 40 + 2) / 160 = 0.825
+
+  Weighted Recall    = (0.90×100 + 0.80×50 + 0.20×10) / 160 = 0.825
+
+  Key Insight
+
+  | Metric   | Value | What it shows                               |
+  |----------|-------|---------------------------------------------|
+  | Macro    | 0.63  | Bird (0.20) drags down the average equally  |
+  | Weighted | 0.825 | Bird barely affects score (only 10 samples) |
+
+  When to use which?
+
+  | Use Case                                               | Best Metric                     |
+  |--------------------------------------------------------|---------------------------------|
+  | All classes equally important (fraud, rare disease)    | Macro                           |
+  | Care more about common cases (overall user experience) | Weighted                        |
+  | Specific class matters most (e.g., cancer detection)   | Per-class recall for that class |
+
+  Warning: Weighted average can hide poor performance on minority classes. In the imbalanced example, Bird has 0.20 precision/recall (terrible!) but weighted average is 0.825 (looks great)

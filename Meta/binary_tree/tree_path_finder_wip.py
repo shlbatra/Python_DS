@@ -11,19 +11,31 @@ class Node:
         self.right = None
         
 class DFS_Search_Recursion:
+
     def dfs_search_recursion(self, root, tgt):
+        res = _dfs_search_recursion(root, tgt)
+
+        if res:
+            return res[::-1]
+        else:
+            return None
+
+    def _dfs_search_recursion(self, root, tgt):
         # Time O(n)
         # Space O(n)
         if root is None: return None # No match found - leaf node
         if root.value == tgt: return [root.value] # Match found - return as array
 
-        left_path = self.dfs_search_recursion(root.left, tgt) # Add left side path
+        left_path = self._dfs_search_recursion(root.left, tgt) # Add left side path
         if left_path is not None:
-            return [root.val, *left_path ]
+        #    return [root.val, *left_path ] # This is an O(n) solution
+            left_path.append(root.val) # add in reverse order
+        return left_path
 
-        right_path = self.dfs_search_recursion(root.right, tgt) 
+        right_path = self._dfs_search_recursion(root.right, tgt) 
         if right_path is not None: # Add right side path
-            return [root.val, *right_path ]
+        #    return [root.val, *right_path ]
+            right_path.append(root.val)
         return None
 
         # Match target -> recursive call True
